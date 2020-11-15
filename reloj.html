@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+</head>
+
+<body>
+<!-- this script got from www.javascriptfreecode.com coded by: Kerixa Inc. -->
+<SCRIPT 
+
+LANGUAGE="JavaScript">
+
+var timerID = null;
+var timerRunning = false;
+
+function stopclock ()
+{
+if(timerRunning)
+clearTimeout(timerID);
+timerRunning = false;
+}
+
+function showtime () 
+{
+var now = new Date();
+var hours = now.getHours();
+var minutes = now.getMinutes();
+var seconds = now.getSeconds()
+
+var timeValue = "" + ((hours >12) ? hours -12 :hours)
+timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+timeValue += (hours >= 12) ? " P.M." : " A.M."
+document.clock.face.value = timeValue;
+
+// you could replace the above with this
+// and have a clock on the status bar:
+// window.status = timeValue;
+
+timerID = setTimeout("showtime()",1000);
+timerRunning = true;
+}
+
+function startclock () 
+{
+// Make sure the clock is stopped
+stopclock();
+showtime();
+}
+
+</SCRIPT>
+
+<BODY onLoad="startclock(); timerONE=window.setTimeout"
+
+TEXT="ffffff">
+
+<CENTER><form name="clock" onSubmit="0">
+<input type="text" name="face" size=13 value=""></CENTER><a target='_blank' href='http://www.javascriptfreecode.com/' style='font-size: 8pt; text-decoration: none'>JavaScript Codes</a>
+</body>
+</html>
